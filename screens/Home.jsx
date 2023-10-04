@@ -6,6 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./home.style";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { Welcome } from "../components";
+import Headings from "../components/home/Headings";
 
 const Home = () => {
   return (
@@ -26,7 +27,8 @@ const Home = () => {
       </View>
       <ScrollView>
         <Welcome/>
-      </ScrollView>
+        </ScrollView>
+        <Headings />
     </SafeAreaView>
   );
 };
