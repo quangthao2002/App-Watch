@@ -7,6 +7,7 @@ import styles from "./home.style";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { Welcome } from "../components";
 import Headings from "../components/home/Headings";
+import Carousel from "../components/home/Carousel";
 
 const Home = () => {
   return (
@@ -27,8 +28,9 @@ const Home = () => {
       </View>
       <ScrollView>
         <Welcome/>
-        </ScrollView>
+        <Carousel />
         <Headings />
+      </ScrollView>
     </SafeAreaView>
   );
 };
