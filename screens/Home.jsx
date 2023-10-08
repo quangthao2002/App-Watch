@@ -10,6 +10,7 @@ import Headings from "../components/home/Headings";
 import Carousel from "../components/home/Carousel";
 import ProductsRow from "../components/products/ProductRow2";
 
+import Categories from "../components/home/Categories";
 
 const Home = () => {
   return (
@@ -33,6 +34,7 @@ const Home = () => {
         <Carousel/>
         <Headings/>
         <ProductsRow/>
+        <Categories />
       </ScrollView>
     </SafeAreaView>
   );
