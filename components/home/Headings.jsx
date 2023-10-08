@@ -1,5 +1,6 @@
 import { StyleSheet,Text,View } from "react-native";
 import React from "react";
+import { COLORS,SIZES } from "../../constants";
 import {Ionicons} from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 
@@ -8,7 +9,7 @@ const Headings = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.headerTitle}>New rival</Text>
+                <Text style={styles.headerTitle}>New Watch</Text>
                 <TouchableOpacity>
                     <Ionicons name="ios-grid" size={24} />
                 </TouchableOpacity>
@@ -17,12 +18,12 @@ const Headings = () => {
     )
 }
 
-export default Headings
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: 20,
-        marginTop: 60,
+        marginTop: SIZES.medium,
+        //    marginBottom: SIZES.xSmall,
+        marginHorizontal: 12,
     },
     header: {
         flexDirection: "row",
@@ -30,8 +31,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     headerTitle: {
-        fontSize: 24,
-        fontFamily: "semiBold",
+        fontSize: SIZES.xLarge -2,
+        fontFamily: "semibold",
         fontWeight: "bold",
     }
 })
+export default Headings

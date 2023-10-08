@@ -8,10 +8,8 @@ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { Welcome } from "../components";
 import Headings from "../components/home/Headings";
 import Carousel from "../components/home/Carousel";
-import ProductsRow from "../components/products/ProductRow2";
 
-
-const Home = () => {
+export const Home = () => {
   return (
     <SafeAreaView>
       <View style={styles.appBarWrapper}>
@@ -29,13 +27,10 @@ const Home = () => {
         </View>
       </View>
       <ScrollView>
-        <Welcome/>
-        <Carousel/>
-        <Headings/>
-        <ProductsRow/>
+        <Welcome />
+        <Carousel />
+        <Headings />
       </ScrollView>
     </SafeAreaView>
   );
 };
-
-export default Home;
