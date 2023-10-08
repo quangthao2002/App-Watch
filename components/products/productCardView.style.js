@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
         width:182,
         height:240,
         marginEnd:20,
-        marginBottom:150,
         borderRadius:SIZES.medium,
         backgroundColor:COLORS.secondary,
     },
