@@ -14,7 +14,7 @@ import Categories from "../components/home/Categories";
 
 const Home = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <View style={styles.appBarWrapper}>
         <View style={styles.appBar}>
           <Ionicons name="location-outline" size={24} />
@@ -30,11 +30,11 @@ const Home = () => {
         </View>
       </View>
       <ScrollView>
-        <Welcome/>
-        <Carousel/>
-        <Headings/>
-        <ProductsRow/>
+        <Welcome />
+        <Carousel />
         <Categories />
+        <Headings />
+        <ProductsRow />
       </ScrollView>
     </SafeAreaView>
   );
