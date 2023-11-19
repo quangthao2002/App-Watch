@@ -6,6 +6,7 @@ import styles from "./search.style";
 import { TextInput } from "react-native-gesture-handler";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import MenuDrawer from "react-native-side-drawer";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const Search = () => {
   const [open, setOpen] = useState(false);
@@ -22,6 +23,7 @@ const Search = () => {
     );
   };
   return (
+    <GestureHandlerRootView >
     <SafeAreaView>
       <MenuDrawer open={open} position={"right"} drawerContent={drawerContent()} drawerPercentage={70} animationTime={250} overlay={true} opacity={0.4}></MenuDrawer>
       <View style={styles.searchContainer}>
@@ -38,6 +40,7 @@ const Search = () => {
         </View>
       </View>
     </SafeAreaView>
+    </GestureHandlerRootView>
   );
 };
 

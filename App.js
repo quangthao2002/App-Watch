@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
-import { Cart, ProductDetails } from "./screens";
+import { Cart, ProductDetails,LoginPage,Order,Favorites,SignUp } from "./screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -46,7 +46,26 @@ export default function App() {
           component={ProductDetails}
           options={{ headerShown: false }}
         />
-
+        <Stack.Screen
+          name="Login"
+          component={LoginPage}
+          options={{ headerShown: false }}
+        />
+           <Stack.Screen
+          name="Orders"
+          component={Order}
+          options={{ headerShown: false }}
+        />
+            <Stack.Screen
+          name="Favorites"
+          component={Favorites}
+          options={{ headerShown: false }}
+        />
+          <Stack.Screen
+          name="SignUp"
+          component={SignUp}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

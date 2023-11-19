@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     marginEnd: 20,
     borderRadius: SIZES.medium,
     backgroundColor: COLORS.secondary,
+    marginBottom: 60
   },
   imageContainer: {
     flex: 1,

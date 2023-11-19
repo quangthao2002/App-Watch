@@ -3,5 +3,10 @@ import Profile from "./Profile";
 import Search from "./Search";
 import Cart from "./Cart";
 import ProductDetails from "./ProductDetails";
-
-export { Home, Profile, Search, Cart ,ProductDetails};
+import LoginPage from "./LoginPage";
+import Order from "./Orders";
+import Favorites from "./Favorites";
+import BackBtn from "../components/products/BackBtn";
+import Button from "../components/products/Button";
+import SignUp from "./SignUp";
+export { Home,Button, Profile,SignUp, Search, Cart, BackBtn,ProductDetails,LoginPage,Order,Favorites};
