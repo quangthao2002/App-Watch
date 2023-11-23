@@ -11,7 +11,7 @@ import {
 const Profile = ({ navigation }) => {
   const [userData, setData] = useState(null);
   // lúc user chưa đăng nhập
-  const [userLogin, setUserLogin] = useState(false );
+  const [userLogin, setUserLogin] = useState(true );
   const cleanCache = () =>{
     Alert.alert(
       "Clear Cache",

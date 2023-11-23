@@ -3,14 +3,15 @@ import React from "react";
 import { COLORS,SIZES } from "../../constants";
 import {Ionicons} from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
-
+import {useNavigation} from '@react-navigation/native'
 
 const Headings = () => {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.headerTitle}>New Watchh</Text>
-                <TouchableOpacity>
+                <Text style={styles.headerTitle}>New Watchs</Text>
+                <TouchableOpacity onPress={()=>navigation.navigate('ProductList')}>
                     <Ionicons name="ios-grid" size={24} />
                 </TouchableOpacity>
             </View>

@@ -26,7 +26,7 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Provide a invalid email address")
     .required("Required"),
-    user: Yup.string()
+    username: Yup.string()
     .min(3,"Provide a invalid name")
     .required("Required"),
 });
@@ -66,12 +66,17 @@ const SignUp = ({navigation}) => {
         />
         <Image
           source={require("../assets/images/bk.png")}
-          style={styles.cover}
+          style={{
+            height: SIZES.height / 2.5,
+            width: SIZES.width - 60,
+            resizeMode: "contain",
+            marginBottom: SIZES.xxLarge,
+          }}
         />
         <Text style={styles.title}>Unlimited Luxurious Watch</Text>
 
         <Formik
-          initialValues={{ email: "", password: "" ,user:''}}
+          initialValues={{ email: "", password: "" ,username:''}}
           validationSchema={validationSchema}
           onSubmit={(values) => console.log(values)}
         >
@@ -94,8 +99,8 @@ const SignUp = ({navigation}) => {
                   touched.email ? COLORS.secondary : COLORS.offwhite
                 )}
               >
-                <SimpleLineIcons
-                  name="user"
+                <MaterialCommunityIcons
+                  name="face-man-profile"
                   size={20}
                   color={COLORS.gray}
                   style={styles.iconstyle}
@@ -103,20 +108,20 @@ const SignUp = ({navigation}) => {
                 <TextInput
                   placeholder="  Enter Name"
                   onFocus={() => {
-                    setFieldTouched("user");
+                    setFieldTouched("username");
                   }}
                   onBlur={() => {
-                    setFieldTouched("user", "");
+                    setFieldTouched("username", "");
                   }}
-                  value={values.user}
-                  onChangeText={handleChange("user")}
+                  value={values.username}
+                  onChangeText={handleChange("username")}
                   autoCapitalize="none"
                   autoCorrect={false}
                   style={{ flex: 1 ,marginLeft:5}}
                 />
               </View>
             </View>
-            {touched.user && errors.user && (
+            {touched.username && errors.username && (
               <Text
                 style={{
                   color: "red",
@@ -126,7 +131,7 @@ const SignUp = ({navigation}) => {
                   fontSize: SIZES.xSmall,
                 }}
               >
-                {errors.user}
+                {errors.username}
               </Text>
             )}
               <View style={styles.wrapper}>

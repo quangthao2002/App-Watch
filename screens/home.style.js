@@ -3,7 +3,7 @@ import { COLORS, SIZES } from "../constants/index";
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 90,
+    flex:1
   },
   textStyle: {
     fontFamily: "bold",

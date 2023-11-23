@@ -1,20 +1,18 @@
-import { View, Text } from "react-native";
+import { View, Text ,ScrollView,TouchableOpacity} from "react-native";
 import { Badge } from "react-native-elements";
 import { Ionicons, Fontisto } from "@expo/vector-icons";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./home.style";
-import { GestureHandlerRootView, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { Welcome } from "../components";
 import Headings from "../components/home/Headings";
 import Carousel from "../components/home/Carousel";
-import ProductsRow from "../components/products/ProductRow2";
+import ProductsRow from "../components/products/ProductRow";
 
 import Categories from "../components/home/Categories";
 
 const Home = () => {
   return (
-    <GestureHandlerRootView>
     <SafeAreaView style={styles.container}>
       <View style={styles.appBarWrapper}>
         <View style={styles.appBar}>
@@ -30,15 +28,14 @@ const Home = () => {
           </View>
         </View>
       </View>
-      <ScrollView>
+      <ScrollView style={{flex:1}}>
         <Welcome />
         <Carousel />
-        <Categories />
+        {/* <Categories /> */}
         <Headings />
         <ProductsRow />
       </ScrollView>
     </SafeAreaView>
-    </GestureHandlerRootView>
   );
 };
 

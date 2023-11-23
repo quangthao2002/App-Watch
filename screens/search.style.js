@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   searchIcon: {
-    marginHorizontal: 10,
+    marginHorizontal: 30,
     color: COLORS.gray,
   },
   searchWrapper: {
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     paddingHorizontal: SIZES.small,
+    color:COLORS.gray
   },
   searchBtn: {
     width: 50,
@@ -34,6 +35,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center",
+    padding:10
   },
 });
 

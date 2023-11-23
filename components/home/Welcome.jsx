@@ -12,8 +12,8 @@ const Welcome = () => {
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.welcomeTxt(COLORS.black, SIZES.xSmall)}>Find The Most</Text>
-        <Text style={styles.welcomeTxt(COLORS.primary, 0)}>Luxurious Watch</Text>
+        {/* <Text style={styles.welcomeTxt(COLORS.black, SIZES.xSmall)}>Find The Most</Text> */}
+        <Text style={styles.welcomeTxt(COLORS.primary, 5)}>Luxurious Watch</Text>
       </View>
 
       <View style={styles.searchContainer}>

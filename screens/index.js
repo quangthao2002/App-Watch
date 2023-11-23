@@ -9,4 +9,7 @@ import Favorites from "./Favorites";
 import BackBtn from "../components/products/BackBtn";
 import Button from "../components/products/Button";
 import SignUp from "./SignUp";
-export { Home,Button, Profile,SignUp, Search, Cart, BackBtn,ProductDetails,LoginPage,Order,Favorites};
+import NewWatchs from "./NewWatchs";
+import ProductList from "../components/products/ProductList";
+import ProductCardView from "../components/products/ProductCardView";
+export { Home,Button,ProductList,ProductCardView,NewWatchs, Profile,SignUp, Search, Cart, BackBtn,ProductDetails,LoginPage,Order,Favorites};

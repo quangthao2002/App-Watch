@@ -7,8 +7,12 @@ import {
 } from "@expo/vector-icons";
 import styles from "./productDetails.style";
 import { COLORS, SIZES } from "../constants";
+import { useRoute } from "@react-navigation/native";
 
 const ProductDetails = ({ navigation }) => {
+  const route = useRoute()
+  const {item} = route.params
+  console.log(item);
   const [count, setCount] = useState(1);
 
   const increment = () => {
@@ -32,15 +36,15 @@ const ProductDetails = ({ navigation }) => {
       </View>
       <Image
         source={{
-          uri: "https://img1.kienthucvui.vn/uploads/2021/02/11/anh-dong-ho-dep-cho-nam_113838496.jpg",
+          uri: item.imageUrl,
         }}
         style={styles.image}
       />
       <View style={styles.detaill}>
         <View style={styles.titleRow}>
-          <Text style={styles.title}>Product</Text>
+          <Text style={styles.title}>{item.name}</Text>
           <View style={styles.priceWrapper}>
-            <Text style={styles.price}>$ 32500</Text>
+            <Text style={styles.price}>{item.price}</Text>
           </View>
         </View>
         <View style={styles.ratingRow}>
@@ -64,13 +68,7 @@ const ProductDetails = ({ navigation }) => {
         <View style={styles.decriptionWrapper}>
           <Text style={styles.decription}>Description</Text>
           <Text style={styles.decriptionText}>
-            A watch is a portable timepiece intended to be carried or worn by a
-            person. It is designed to keep a consistent movement despite the
-            motions caused by the person's activities. A wristwatch is designed
-            to be worn around the wrist, attached by a watch strap or other type
-            of bracelet, including metal bands, leather straps, or any other
-            kind of bracelet. A pocket watch is designed for a person to carry
-            in a pocket, often attached to a chain.
+           {item.description}
           </Text>
         </View>
         <View style={{ marginTop: SIZES.small}}>

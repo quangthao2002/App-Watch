@@ -9,6 +9,8 @@ const styles = StyleSheet.create({
     fontSize: SIZES.xxLarge - 15,
     marginTop: top,
     color: color,
+    textAlign:'center'
+
   }),
   searchContainer: {
     flexDirection: "row",
