@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, FlatList, Image } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS, SIZES } from "../constants";
@@ -7,15 +7,26 @@ import { TextInput } from "react-native-gesture-handler";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import MenuDrawer from "react-native-side-drawer";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-
+import axios  from 'axios'
+import SearchTitle from "../components/products/SearchTitle";
 const Search = () => {
   const[searchKey,setSearchkey] = useState('')
-  // console.log(searchKey)
+  const [searchResult,setSerchResult] = useState([])
+  console.log(searchResult)
   const [open, setOpen] = useState(false);
 
   const toggleOpen = () => {
     setOpen(!open);
   };
+  // http://localhost:3000/api/products/search/${searchKey}
+  const handleSearch=async ()=>{
+    try {
+      const response = await axios.get(`http://localhost:3000/api/products/search/${searchKey}`)
+        setSerchResult(response.data)
+    } catch (error) {
+        console.log("search product faill",error)
+    }
+  }
 
   const drawerContent = () => {
     return (
@@ -57,11 +68,26 @@ const Search = () => {
             />
           </View>
           <View>
-            <TouchableOpacity style={styles.searchBtn}>
+            <TouchableOpacity style={styles.searchBtn} onPress={()=> handleSearch()}>
               <Feather name="search" size={24} color={COLORS.offwhite} />
             </TouchableOpacity>
           </View>
         </View>
+        {searchResult.length === 0 ? (
+          <View>
+            <Image source={require('../assets/images/Pose23.png')}
+              style={{resizeMode:'contain',width:SIZES.width-120,height:SIZES.height-180,opacity:0.9}}
+            />
+          
+          </View>
+        ):(
+          <FlatList
+            data={searchResult}
+            keyExtractor={(item) => item._id}
+            renderItem={({item})=> <SearchTitle item={item}/>}
+            style={{marginHorizontal:10}}
+          />
+        )}
       </SafeAreaView>
     </GestureHandlerRootView>
   );
