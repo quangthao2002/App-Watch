@@ -18,6 +18,7 @@ import { MaterialCommunityIcons,Ionicons,SimpleLineIcons,EvilIcons } from "@expo
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { COLORS, SIZES } from "../constants";
+import axios from "axios";
 
 const validationSchema = Yup.object().shape({
   password: Yup.string()
@@ -55,6 +56,20 @@ const SignUp = ({navigation}) => {
   const [loader, setLoader] = useState(false);
   const [reponseData, setReposeData] = useState(null);
   const [obsecureText, setObsecureText] = useState(null);
+  const registerUser = async(values)=>{
+      setLoader(true);
+      try {
+        const endpoint ='http://localhost:3000/api/register';
+        const data = values
+
+        const response = await axios.post(endpoint,data)
+        if(response.status === 201){
+          navigation.replace('Login')
+        }
+      } catch (error) {
+          console.log(error);
+      }
+  }
   return (
     <ScrollView>
     <SafeAreaView style={{ marginHorizontal: 20 }}>
@@ -78,7 +93,7 @@ const SignUp = ({navigation}) => {
         <Formik
           initialValues={{ email: "", password: "" ,username:''}}
           validationSchema={validationSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => registerUser(values)}
         >
           {({
             handleChange,
@@ -232,6 +247,7 @@ const SignUp = ({navigation}) => {
               )}
              
               <Button
+                loader={loader}
                 title={"S I G N U P"}
                 isValid={isValid}
                 onpress={isValid ? handleSubmit : inValidForm}

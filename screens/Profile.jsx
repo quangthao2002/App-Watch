@@ -4,14 +4,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./profile.style";
 import { StatusBar } from "react-native";
 import { COLORS } from "../constants";
+
 import {
   AntDesign,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const Profile = ({ navigation }) => {
-  const [userData, setData] = useState(null);
+  const [userData, setUserData] = useState(null);
   // lúc user chưa đăng nhập
-  const [userLogin, setUserLogin] = useState(true );
+  const [userLogin, setUserLogin] = useState(false );
   const cleanCache = () =>{
     Alert.alert(
       "Clear Cache",
@@ -46,22 +48,58 @@ const Profile = ({ navigation }) => {
       ],
     )
   }
+
+  useEffect(()=>{
+    checkExistingUser()
+  },[])
+  
+  const checkExistingUser = async ()=>{
+    const id = await AsyncStorage.getItem('id')
+    const useId = `user${JSON.parse(id)}`;
+
+    try {
+      const currentUser = await AsyncStorage.getItem(useId);
+      if(currentUser !== null){
+        const parsedData = JSON.parse(currentUser)
+        setUserData(parsedData)
+        setUserLogin(true)
+      }else{
+        navigation.navigate('Login')
+      }
+    } catch (error) {
+        console.log("Error retrieving the data:",error)
+    }
+  }
+  const useLogout = async ()=>{
+
+    const id = await AsyncStorage.getItem('id')
+    const useId = `user${JSON.parse(id)}`
+
+    try {
+        await AsyncStorage.multiRemove([useId,'id'])
+        navigation.replace("Bottom Navigation")
+    } catch (error) {
+      console.log("Error loggin out the user:",error)
+    }
+  }
   const logout = () =>{
-    Alert.alert(
-      "Logout",
-      "Are you sure you want to logout",
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
+    console.log('log out')
+    useLogout()
+    // Alert.alert(
+    //   "Logout",
+    //   "Are you sure you want to logout",
+    //   [
+    //     {
+    //       text: "Cancel",
+    //       onPress: () => console.log("Cancel Pressed"),
+    //       style: "cancel",
+    //     },
         
-        { text: "OK", onPress: () => {
-            setUserLogin(false)
-        } },
-      ],
-    )
+    //     { text: "OK", onPress: () => {
+    //         setUserLogin(false)
+    //     } },
+    //   ],
+    // )
   }
   return (
     <View style={styles.container}>
@@ -76,7 +114,7 @@ const Profile = ({ navigation }) => {
             style={styles.profile}
           />
           <Text style={styles.name}>
-            {userLogin === true ? "QuangThao" : "Bạn chưa đăng nhập"}
+            {userLogin === true ? userData.name : "Bạn chưa đăng nhập"}
           </Text>
           {userLogin === false ? (
             <TouchableOpacity onPress={() => navigation.navigate("Login")}>
@@ -87,7 +125,7 @@ const Profile = ({ navigation }) => {
           ) : (
             <View>
               <View style={styles.btnLogin}>
-                <Text style={styles.menuText}>quangthao@gmail.com</Text>
+                <Text style={styles.menuText}>{userLogin === true ? userData.email : ""}</Text>
               </View>
             </View>
           )}
