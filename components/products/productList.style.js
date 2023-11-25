@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         paddingLeft:10
     },
     separator:{
-        height:12
+        height:26
     }
 
 })

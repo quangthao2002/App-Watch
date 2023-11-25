@@ -13,9 +13,10 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.lightWhite,
     },
     upperRow:{
+        marginTop:10,
         width: SIZES.width-50,
         backgroundColor:COLORS.primary,
-        // position:'absolute',
+        position:'absolute',
         top:SIZES.large,
         marginHorizontal:SIZES.large,
         borderRadius:SIZES.large,

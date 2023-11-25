@@ -1,20 +1,22 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Ionicons,
   SimpleLineIcons,
-  MaterialCommunityIcons,Fontisto
+  MaterialCommunityIcons,
+  Fontisto,
 } from "@expo/vector-icons";
 import styles from "./productDetails.style";
 import { COLORS, SIZES } from "../constants";
 import { useRoute } from "@react-navigation/native";
+import CartContext from "../components/products/CardContext";
 
 const ProductDetails = ({ navigation }) => {
-  const route = useRoute()
-  const {item} = route.params
+  const route = useRoute();
+  const { item } = route.params;
   console.log(item);
   const [count, setCount] = useState(1);
-
+  const { setCart } = useContext(CartContext);
   const increment = () => {
     setCount(count + 1);
   };
@@ -67,11 +69,9 @@ const ProductDetails = ({ navigation }) => {
 
         <View style={styles.decriptionWrapper}>
           <Text style={styles.decription}>Description</Text>
-          <Text style={styles.decriptionText}>
-           {item.description}
-          </Text>
+          <Text style={styles.decriptionText}>{item.description}</Text>
         </View>
-        <View style={{ marginTop: SIZES.small}}>
+        <View style={{ marginTop: SIZES.small }}>
           <View style={styles.location}>
             <View style={{ flexDirection: "row" }}>
               <Ionicons name="location-outline" size={22} />
@@ -84,12 +84,17 @@ const ProductDetails = ({ navigation }) => {
           </View>
         </View>
         <View style={styles.cartRow}>
-              <TouchableOpacity onPress={()=>{}} style={styles.cartBtn}>
-                      <Text style={styles.cartTitle}>BUY NOW</Text>
-                </TouchableOpacity> 
-                <TouchableOpacity onPress={()=>{}} style={styles.addCart}>
-                      <Fontisto name="shopping-bag" size={20} color={COLORS.lightWhite}/>
-                </TouchableOpacity> 
+          <TouchableOpacity onPress={() => {}} style={styles.cartBtn}>
+            <Text style={styles.cartTitle}>BUY NOW</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setCart(currentCart => [...currentCart, { ...item, quantity: count }]);
+            }}
+            style={styles.addCart}
+          >
+            <Fontisto name="shopping-bag" size={20} color={COLORS.lightWhite} />
+          </TouchableOpacity>
         </View>
       </View>
     </View>

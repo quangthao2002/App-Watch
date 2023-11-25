@@ -163,7 +163,7 @@ const Profile = ({ navigation }) => {
               </TouchableOpacity>
 
               <TouchableOpacity onPress={() => {
-                navigation.navigate("Cart")
+                navigation.navigate('Cart')
                }}>
                 <View style={styles.menuItem(0.4)}>
                   <MaterialCommunityIcons
@@ -174,7 +174,7 @@ const Profile = ({ navigation }) => {
                   <Text style={styles.menuText}>Cart</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => {cleanCache()}}>
+              <TouchableOpacity onPress={() => {}}>
                 <View style={styles.menuItem(0.4)}>
                   <MaterialCommunityIcons
                     name="cached"

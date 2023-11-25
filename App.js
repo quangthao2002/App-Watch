@@ -5,10 +5,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
 import { Cart, ProductDetails,LoginPage,Order,Favorites,SignUp, NewWatchs } from "./screens";
+import CartContext from "./components/products/CardContext";
+import { useState } from "react";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [cart, setCart] = useState([]);
   const [fontsLoaded] = useFonts({
     regular: require("./assets/fonts/Poppins-Regular.ttf"),
     light: require("./assets/fonts/Poppins-Light.ttf"),
@@ -29,6 +32,7 @@ export default function App() {
   }
 
   return (
+    <CartContext.Provider value={{ cart, setCart }}>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -73,5 +77,6 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </CartContext.Provider>
   );
 }
